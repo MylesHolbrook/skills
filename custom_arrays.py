@@ -24,20 +24,27 @@
 # VARIABLES:
     # capacity - refers to how many Bytes we are allocating in our array
 
-class Array: 
+class Array:
     def __init__(self, capacity: int):
-        self.size = 0
         self.capacity = capacity
         self.data = [None] * capacity
-    
+        self.length = 0
+
     def push(self, value):
-        self.data[self.size] = value
-        self.size = self.size + 1
-    
+        self.data[self.length] = value
+        self.length = self.length + 1
+
     def pop(self):
-        self.data[self.size - 1] = None
-        self.size = self.size - 1
+        self.data[self.length - 1] = None
+        self.length = self.length - 1
 
 # TODO: Guard ourselves from overflowing or popping a value that isn't there
-# TODO: Resize the array if the size is almost at the capacity
+# TODO: Grow the array if the size is almost at the capacity
 # TODO: Shrink the array if the size is a fraction of the capacity
+
+arr = Array(3)
+arr.push("Olive")
+arr.push("Zoey")
+arr.push("Teddy")
+arr.pop()
+print(arr.data)
